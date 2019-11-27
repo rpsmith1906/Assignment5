@@ -90,15 +90,9 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         view.setWebViewClient(new MyWebViewClient());
 
         WebSettings settings = view.getSettings();
-        settings.setAllowFileAccessFromFileURLs(true);
-        settings.setJavaScriptEnabled(true);
-        settings.setAllowUniversalAccessFromFileURLs(true);
-
-        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        if (!(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
-                && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)) {
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
-        }
+        settings.setAllowFileAccessFromFileURLs(false);
+        settings.setJavaScriptEnabled(false);
+        settings.setAllowUniversalAccessFromFileURLs(false);
 
         setContentView(view);
         view.loadUrl(SPELL_CHECK_URL + "register");
